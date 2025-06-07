@@ -8,7 +8,7 @@ type MainLayoutProps = PropsWithChildren & {
 export function MainLayout({ children, leftContent }: MainLayoutProps) {
 
     return <div className='flex flex-row w-full'>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 w-50 min-w-[150px]'>
             <TitleView />
             {leftContent}
         </div>

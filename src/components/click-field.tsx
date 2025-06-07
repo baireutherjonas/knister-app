@@ -36,8 +36,8 @@ export function ClickField({ row, col }: ClickFieldProps) {
         }
     }
 
-    return <Button variant={'ghost'} asChild onClick={handleSetValue}>
-        <div className={`rounded-md w-10 h-10 m-2 border-solid border-black border content-center justify-items-center ${isDiagonalField && 'bg-blue-100'}`}>
+    return <Button size={'sm'} variant={'ghost'} asChild onClick={handleSetValue}>
+        <div className={`rounded-md w-8 h-8 m-2 border-solid border-black border content-center justify-items-center ${isDiagonalField && 'bg-blue-100'}`}>
             {getBoardValue}
         </div>
     </Button>

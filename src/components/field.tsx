@@ -6,7 +6,7 @@ type GameFieldProps = PropsWithChildren & {
 }
 
 export function GameField({ children, className }: GameFieldProps) {
-    return <div className={cn(`rounded-md w-10 h-10 m-2 border-solid border-black border content-center justify-items-center`, className)}>
+    return <div className={cn(`rounded-md w-8 h-8 m-2 border-solid border-black border content-center justify-items-center`, className)}>
         {children}
     </div>
 }
