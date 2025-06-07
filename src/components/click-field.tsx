@@ -1,4 +1,6 @@
-import { useBoardAtom } from "@/utils/board-atom";
+import {
+    useBoardAtom
+} from "@/utils/board-atom";
 import { Button } from "./ui/button";
 import { useDiceAtom } from "@/utils/dice-atom";
 import { useNavigate } from "react-router";
@@ -14,16 +16,17 @@ const getIsDiaognal = (row: number, col: number) => {
 
 export function ClickField({ row, col }: ClickFieldProps) {
     const isDiagonalField = getIsDiaognal(row, col)
-    const { setBoardValue, getBoardValue } = useBoardAtom()
+    const { setBoardValue, useGetBoardValue } = useBoardAtom()
     const { getTotalSum } = useDiceAtom()
     const navigate = useNavigate()
+    const getBoardValue = useGetBoardValue(row, col)
 
     const handleSelectValue = (value: number) => {
         setBoardValue(row, col, value)
     }
 
     const handleSetValue = () => {
-        if (getBoardValue(row, col)) return
+        if (getBoardValue) return
 
         const totalSum = getTotalSum()
         if (totalSum) {
@@ -35,7 +38,7 @@ export function ClickField({ row, col }: ClickFieldProps) {
 
     return <Button variant={'ghost'} asChild onClick={handleSetValue}>
         <div className={`rounded-md w-10 h-10 m-2 border-solid border-black border content-center justify-items-center ${isDiagonalField && 'bg-blue-100'}`}>
-            {getBoardValue(row, col)}
+            {getBoardValue}
         </div>
     </Button>
 

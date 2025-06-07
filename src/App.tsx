@@ -1,4 +1,4 @@
-import PWABadge from './PWABadge.tsx'
+
 import './App.css'
 import { BoardPage } from './pages/board-page.tsx'
 import { RulesView } from './view/rules-view.tsx'

@@ -39,7 +39,6 @@ export function DiceSidepanel() {
         </div>
         <div className="font-bold">{getTotalSum() ? getTotalSum() : 'Bitte würfeln'}</div>
         <Button variant="outline" onClick={dice}>Würfeln</Button>
-
         {canUndo() && <Button variant="outline" onClick={undoAction}>Rückgängig</Button>}
     </div>
 }
