@@ -1,6 +1,6 @@
 import {
     useBoardAtom
-} from "@/utils/board-atom";
+} from "@/utils/use-board-atom";
 import { Button } from "./ui/button";
 import { useDiceAtom } from "@/utils/dice-atom";
 import { useNavigate } from "react-router";

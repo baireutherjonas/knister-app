@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { useBoardAtom } from "@/utils/board-atom"
+import { useBoardAtom } from "@/utils/use-board-atom"
 import { useDiceAtom } from "@/utils/dice-atom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiceFive, faDiceFour, faDiceOne, faDiceSix, faDiceThree, faDiceTwo } from '@fortawesome/free-solid-svg-icons'

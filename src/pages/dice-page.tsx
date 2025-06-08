@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useBoardAtom } from "@/utils/board-atom";
+import { useBoardAtom } from "@/utils/use-board-atom";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 

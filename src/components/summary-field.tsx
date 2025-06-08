@@ -1,4 +1,4 @@
-import { useBoardAtom } from "@/utils/board-atom";
+import { useBoardAtom } from "@/utils/use-board-atom";
 import { GameField } from "./field";
 
 type SummaryFieldProps = {

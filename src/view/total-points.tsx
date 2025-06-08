@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { useBoardAtom } from "@/utils/board-atom"
+import { useBoardAtom } from "@/utils/use-board-atom"
 import { PropsWithChildren } from "react"
 
 function TotalPointsRenderer({ children }: PropsWithChildren) {

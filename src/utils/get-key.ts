@@ -1,0 +1,1 @@
+export const getKey = (row: number, col: number) => `${row}-${col}`
