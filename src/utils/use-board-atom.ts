@@ -2,7 +2,6 @@ import { useAtom } from "jotai";
 import { useDiceAtom } from "./use-dice-atom";
 import { atomWithStorage } from 'jotai/utils';
 import { getKey } from "./get-key";
-import { getGroupedValues } from "./get-grouped-values";
 
 type FieldValue = {
     field: string;
