@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useBoardAtom } from "@/utils/use-board-atom"
+import { useGetTotalPoints } from "@/utils/use-get-points"
 import { PropsWithChildren } from "react"
 
 function TotalPointsRenderer({ children }: PropsWithChildren) {
@@ -8,13 +9,15 @@ function TotalPointsRenderer({ children }: PropsWithChildren) {
 
 export function TotalPoints() {
 
-    const { summaryValues, resetBoard } = useBoardAtom()
+    const { resetBoard } = useBoardAtom()
 
-    const fieldindexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    const { getGameSum } = useGetTotalPoints()
 
-    if (fieldindexes.every((v) => summaryValues(v) !== null)) {
+
+
+    if (getGameSum()) {
         return <div>
-            <TotalPointsRenderer>Punkte {fieldindexes.reduce((sum, x) => (sum || 0) + (summaryValues(x) || 0))}</TotalPointsRenderer>
+            <TotalPointsRenderer>Punkte {getGameSum()}</TotalPointsRenderer>
             <Button variant={'secondary'} onClick={resetBoard}>Neustart</Button>
         </div>
     }

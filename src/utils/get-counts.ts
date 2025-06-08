@@ -8,5 +8,5 @@ export const getCounts = (values: number[]) => {
         :
         map.set(v, 1));
 
-    return Array.from(map.values());
+    return Array.from(map.values()).sort((a, b) => a - b);
 }
