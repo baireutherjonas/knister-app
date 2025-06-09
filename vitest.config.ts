@@ -7,10 +7,11 @@ export default defineConfig({
         environment: "jsdom",
         coverage: {
             provider: 'istanbul',
-
-            reporter: ['text', 'json', 'html'],
+            reportOnFailure: true,
+            reporter: ['json-summary', 'json', 'html'],
         },
         setupFiles: './src/test/setup.ts',
+
     },
     resolve: {
         alias: {
