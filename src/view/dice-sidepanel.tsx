@@ -1,30 +1,12 @@
+import { Dice } from "@/components/dice"
 import { Button } from "@/components/ui/button"
 import { useBoardAtom } from "@/utils/use-board-atom"
 import { useDiceAtom } from "@/utils/use-dice-atom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDiceFive, faDiceFour, faDiceOne, faDiceSix, faDiceThree, faDiceTwo } from '@fortawesome/free-solid-svg-icons'
 import { useDiceView } from "@/utils/use-dice-view"
 import { DicePage } from "@/view/dice-page"
 
 
-const Dice = ({ value }: { value: number }) => {
-    switch (value) {
-        case 1:
-            return <FontAwesomeIcon size="3x" icon={faDiceOne} />
-        case 2:
-            return <FontAwesomeIcon size="3x" icon={faDiceTwo} />
-        case 3:
-            return <FontAwesomeIcon size="3x" icon={faDiceThree} />
-        case 4:
-            return <FontAwesomeIcon size="3x" icon={faDiceFour} />
-        case 5:
-            return <FontAwesomeIcon size="3x" icon={faDiceFive} />
-        case 6:
-            return <FontAwesomeIcon size="3x" icon={faDiceSix} />
-        default:
-            return null;
-    }
-}
+
 
 export function DiceSidepanel() {
     const { setDiceValue, getTotalSum, diceValue } = useDiceAtom()

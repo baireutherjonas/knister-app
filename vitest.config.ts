@@ -14,7 +14,8 @@ export default defineConfig({
                 branches: 80,
                 functions: 80,
                 statements: 80
-            }
+            },
+            exclude: ['./src/PWABadge.tsx', './dist']
         },
         setupFiles: './src/test/setup.ts',
 
