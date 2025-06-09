@@ -7,7 +7,10 @@ import userEvent from "@testing-library/user-event";
 const getTotalSumMock = vi.fn()
 const diceValueMock = vi.fn()
 const setDiceValueMock = vi.fn()
-vi.mock('@/view/dice-page', () => ({ DicePage: () => <div>DicePage</div> }))
+const canUndoMock = vi.fn()
+const undoActionMock = vi.fn()
+const resetDiceMock = vi.fn()
+vi.mock('@/view/dice-view', () => ({ DiceView: () => <div>DicePage</div> }))
 
 vi.mock('@/utils/use-dice-view')
 
@@ -15,7 +18,14 @@ vi.mock('@/utils/use-dice-atom', () => ({
     useDiceAtom: () => ({
         setDiceValue: setDiceValueMock,
         getTotalSum: getTotalSumMock,
-        diceValue: diceValueMock
+        getDiceValue: diceValueMock,
+        resetDice: resetDiceMock
+    })
+}))
+vi.mock('@/utils/use-board-atom', () => ({
+    useBoardAtom: () => ({
+        canUndo: canUndoMock,
+        undoAction: undoActionMock
     })
 }))
 
@@ -32,6 +42,7 @@ describe('dice side panel', () => {
     })
 
     it('render dice button', async () => {
+        diceValueMock.mockImplementation(() => [undefined, undefined])
         getTotalSumMock.mockImplementation(() => undefined)
         const user = userEvent.setup()
         vi.mocked(useDiceView).mockReturnValue(({
@@ -46,6 +57,34 @@ describe('dice side panel', () => {
         expect(setDiceValueMock).toHaveBeenCalledTimes(1)
     })
 
-    it('should render dice images', () => {
+    it('should render dice images', async () => {
+        vi.mocked(useDiceView).mockReturnValue(({
+            diceView: undefined,
+            closeDiceView: vi.fn(),
+            setDiceView: vi.fn(),
+            hasDiceOpen: vi.fn()
+        }))
+        getTotalSumMock.mockImplementation(() => 11)
+        canUndoMock.mockImplementation(() => true)
+        diceValueMock.mockImplementation(() => [1, 1])
+        const user = userEvent.setup()
+        const { getByRole } = render(<DiceSidepanel />)
+        await user.click(getByRole('button', { name: /Rückgängig/ }))
+    })
+
+    it('should revert last value', async () => {
+        vi.mocked(useDiceView).mockReturnValue(({
+            diceView: undefined,
+            closeDiceView: vi.fn(),
+            setDiceView: vi.fn(),
+            hasDiceOpen: vi.fn()
+        }))
+        getTotalSumMock.mockImplementation(() => 11)
+        canUndoMock.mockImplementation(() => true)
+        diceValueMock.mockImplementation(() => [undefined, undefined])
+        const user = userEvent.setup()
+        const { getByRole } = render(<DiceSidepanel />)
+        await user.click(getByRole('button', { name: /Rückgängig/ }))
+        expect(undoActionMock).toHaveBeenCalledTimes(1)
     })
 })

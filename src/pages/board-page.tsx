@@ -2,8 +2,7 @@ import { ClickField } from "@/components/click-field"
 import { SummaryField } from "@/components/summary-field"
 
 export function BoardPage() {
-
-    return <div className="flex flex-row">
+    return <div className="flex flex-row m-auto">
 
         <SummaryField index={11} />
 
