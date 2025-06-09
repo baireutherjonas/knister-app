@@ -27,6 +27,7 @@ describe('dice-view', () => {
         expect(setBoardValueMock).toHaveBeenCalledWith(1, 1, 5)
         expect(closeDiceViewMock).toHaveBeenCalledTimes(1)
     })
+
     it('render dice view and abort', async () => {
         const user = userEvent.setup()
         const { getByText } = render(<DiceView />)

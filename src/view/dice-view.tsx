@@ -12,9 +12,7 @@ export function DiceView() {
     }
 
     const handleSelectValue = (value: number) => {
-        if (diceView) {
-            setBoardValue(diceView?.row, diceView?.col, value);
-        }
+        setBoardValue(diceView!.row, diceView!.col, value);
         handleClose()
     }
 

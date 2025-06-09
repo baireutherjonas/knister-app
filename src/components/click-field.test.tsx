@@ -59,4 +59,14 @@ describe('ClickField', () => {
         const { container } = render(<ClickField row={3} col={3} />)
         expect(container.children[0]).toHaveClass('bg-green-300')
     })
+
+    it('should render disabled button', async () => {
+        const user = userEvent.setup()
+        useGetBoardValueMock.mockImplementation((_row: number, _col: number) => 10)
+
+        const { container } = render(<ClickField row={1} col={1} />)
+        await user.click(container.children[0])
+        expect(setBoardValueMock).toHaveBeenCalledTimes(0)
+        expect(setDiceViewMock).toHaveBeenCalledTimes(0)
+    })
 })
