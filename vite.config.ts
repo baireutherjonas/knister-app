@@ -36,6 +36,7 @@ export default defineConfig({
       type: 'module',
     },
   })],
+  base: '/knister-app',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
