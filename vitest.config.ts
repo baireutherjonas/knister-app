@@ -9,6 +9,12 @@ export default defineConfig({
             provider: 'istanbul',
             reportOnFailure: true,
             reporter: ['json-summary', 'json', 'html'],
+            thresholds: {
+                lines: 80,
+                branches: 80,
+                functions: 80,
+                statements: 80
+            }
         },
         setupFiles: './src/test/setup.ts',
 
