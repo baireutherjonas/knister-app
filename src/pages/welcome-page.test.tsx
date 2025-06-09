@@ -11,7 +11,7 @@ const resetBoardMock = vi.fn()
 
 vi.mock('@/utils/use-board-atom', () => ({
     useBoardAtom: () => ({
-        boardValues: () => boardValuesMock(),
+        boardValues: boardValuesMock,
         resetBoard: resetBoardMock
     })
 }))
@@ -19,31 +19,35 @@ vi.mock('@/utils/use-board-atom', () => ({
 vi.mock('react-router', async (importOriginal) => {
     return {
         ...await importOriginal<typeof import('react-router')>(),
-        useNavigate: () => navigateMock()
+        useNavigate: () => navigateMock
     }
 })
 
 describe('welcome page', () => {
     it('render title', () => {
+        boardValuesMock.mockImplementation(() => [])
         const { getByText } = render(<WelcomePage />, { wrapper: TestWrapper })
         expect(getByText(/Herzlich willkommen zum digitalen Knister Block/i)).toBeDefined()
     })
 
     it('render disabled continue button', () => {
-        boardValuesMock.mockReturnValueOnce([])
+        boardValuesMock.mockImplementation(() => [])
         const { getByText } = render(<WelcomePage />, { wrapper: TestWrapper })
         expect(getByText("Spiel fortsetzen")).toHaveAttribute('disabled', '')
         expect(getByText("Spiel neu starten")).not.toHaveAttribute('disabled', '')
     })
 
     it('click continue', async () => {
-        const { getByText } = render(<WelcomePage />, { wrapper: TestWrapper })
+        const user = userEvent.setup()
+        boardValuesMock.mockImplementation(() => [{ time: 'nothing', value: {} }])
+        const { getByRole } = render(<WelcomePage />, { wrapper: TestWrapper })
 
-        await userEvent.click(getByText("Spiel fortsetzen"))
+        await user.click(getByRole('button', { name: /Spiel fortsetzen/i }))
         expect(navigateMock).toHaveBeenCalledTimes(1)
     })
 
     it('click restart', async () => {
+        boardValuesMock.mockImplementation(() => [])
         const user = userEvent.setup()
         const { getByRole } = render(<WelcomePage />, { wrapper: TestWrapper })
         await user.click(getByRole('button', { name: /Spiel neu starten/i }))

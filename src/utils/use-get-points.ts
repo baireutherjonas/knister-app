@@ -5,7 +5,7 @@ import { useBoardAtom } from "./use-board-atom";
 export const useGetTotalPoints = () => {
     const { boardValues } = useBoardAtom()
     const getTotalPoints = (fieldIndex: number) => {
-        const sum = getTotalSum(getGroupedValues(boardValues, fieldIndex))
+        const sum = getTotalSum(getGroupedValues(boardValues(), fieldIndex))
         return sum && (fieldIndex === 5 || fieldIndex === 11) ? sum * 2 : sum;
     }
     const getGameSum = () => {

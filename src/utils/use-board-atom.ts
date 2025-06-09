@@ -46,6 +46,7 @@ export const useBoardAtom = () => {
         return undefined
     }
 
+    const getBoardValues = () => boardValues
 
-    return { boardValues, setBoardValue, undoAction, canUndo, resetBoard, useGetBoardValue }
+    return { boardValues: getBoardValues, setBoardValue, undoAction, canUndo, resetBoard, useGetBoardValue }
 }

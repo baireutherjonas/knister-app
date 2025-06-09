@@ -10,7 +10,6 @@ export default defineConfig({
 
             reporter: ['text', 'json', 'html'],
         },
-        reporters: ['html'],
         setupFiles: './src/test/setup.ts',
     },
     resolve: {

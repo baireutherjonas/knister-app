@@ -6,7 +6,7 @@ import { getGroupedValues } from "./get-grouped-values";
 
 vi.mock('./use-board-atom', () => ({
     useBoardAtom: () => ({
-        boardValues: [{ time: 'nothing', field: { field: '0-0', value: 1 } },
+        boardValues: () => [{ time: 'nothing', field: { field: '0-0', value: 1 } },
         { time: 'nothing', field: { field: '1-0', value: 2 } },
         { time: 'nothing', field: { field: '2-0', value: 3 } },
         { time: 'nothing', field: { field: '3-0', value: 4 } },
