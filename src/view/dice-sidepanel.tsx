@@ -3,8 +3,8 @@ import { useBoardAtom } from "@/utils/use-board-atom"
 import { useDiceAtom } from "@/utils/use-dice-atom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiceFive, faDiceFour, faDiceOne, faDiceSix, faDiceThree, faDiceTwo } from '@fortawesome/free-solid-svg-icons'
-import { useDiceView } from "@/utils/view-mode-atom"
-import { DicePage } from "@/pages/dice-page"
+import { useDiceView } from "@/utils/use-dice-view"
+import { DicePage } from "@/view/dice-page"
 
 
 const Dice = ({ value }: { value: number }) => {

@@ -11,7 +11,7 @@ export const useGetTotalPoints = () => {
     const getGameSum = () => {
         const fieldindexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         return fieldindexes.every((v) => getTotalPoints(v) !== null) ?
-            fieldindexes.reduce((sum, x) => (sum || 0) + (getTotalPoints(x) || 0))
+            fieldindexes.reduce((sum, x) => (sum || 0) + getTotalPoints(x)!)
             : undefined
     }
     return { getTotalPoints, getGameSum }

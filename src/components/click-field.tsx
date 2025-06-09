@@ -3,7 +3,7 @@ import {
 } from "@/utils/use-board-atom";
 import { Button } from "./ui/button";
 import { useDiceAtom } from "@/utils/use-dice-atom";
-import { useDiceView } from "@/utils/view-mode-atom";
+import { useDiceView } from "@/utils/use-dice-view";
 
 type ClickFieldProps = {
     row: number;

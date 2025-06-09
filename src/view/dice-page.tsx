@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useBoardAtom } from "@/utils/use-board-atom";
-import { useDiceView } from "@/utils/view-mode-atom";
+import { useDiceView } from "@/utils/use-dice-view";
 
 const values: number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 

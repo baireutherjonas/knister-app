@@ -10,6 +10,7 @@ import { faBars, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from './components/ui/button.tsx'
 import { useGetTotalPoints } from './utils/use-get-points.ts'
+import PWABadge from './PWABadge.tsx'
 
 function App() {
   const [open, setOpen] = useState<boolean>(true)
@@ -34,6 +35,7 @@ function App() {
       <BoardPage />
       {!getGameSum() && <DiceSidepanel />}
     </div>
+    <PWABadge />
   </div>
 }
 

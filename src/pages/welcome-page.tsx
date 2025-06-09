@@ -8,15 +8,19 @@ export function WelcomePage() {
     const { resetBoard, boardValues } = useBoardAtom()
 
     const handleStart = () => {
-        resetBoard()
         navigate('game')
+    }
+
+    const handleReset = () => {
+        resetBoard()
+        handleStart()
     }
 
     return <div className="flex flex-col gap-6 w-full mt-5">
         Herzlich willkommen zum digitalen Knister Block
         <div className="flex flex-col items-center gap-6">
-            <Button onClick={() => navigate('game')} disabled={Object.entries(boardValues).length === 0}>Spiel fortsetzen</Button>
-            <Button onClick={handleStart}>Spiel neu starten</Button>
+            <Button onClick={handleStart} disabled={Object.entries(boardValues).length === 0}>Spiel fortsetzen</Button>
+            <Button onClick={handleReset}>Spiel neu starten</Button>
         </div>
     </div >
 }

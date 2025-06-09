@@ -20,7 +20,7 @@ vi.mock('./get-grouped-values')
 describe('useGetTotalPoints', () => {
 
     it('render Hook', () => {
-        vi.mocked(getGroupedValues).mockImplementation((_values: FieldTime[], index: number) => [2, 2, 2, 2, 2])
+        vi.mocked(getGroupedValues).mockImplementation((_values: FieldTime[], _index: number) => [2, 2, 2, 2, 2])
 
         const { result } = renderHook(() => useGetTotalPoints())
         expect(result.current.getTotalPoints(0)).toBe(10)
